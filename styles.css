@@ -161,6 +161,17 @@ h2.section {
 .about-creds .creds li { padding: 16px 0; }
 .about-creds .creds li:first-child { padding-top: 0; }
 .about-creds .creds strong { font-size: 1.1rem; }
+.about-layout {
+  display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: start;
+  padding: 56px 0 64px;
+}
+.about-intro h1 { margin-bottom: 18px; }
+.about-intro .lede { margin: 0; }
+.about-layout .creds li { padding: 14px 0; }
+.about-layout .creds li:first-child { padding-top: 6px; }
+@media (max-width: 860px) {
+  .about-layout { grid-template-columns: 1fr; gap: 28px; padding: 32px 0 48px; }
+}
 .about-next { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
 .button.quiet { background: #e8eef7; color: var(--ink); font-weight: 600; }
 .button.quiet:hover { background: #d6e0ee; }
