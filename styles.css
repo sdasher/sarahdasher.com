@@ -139,6 +139,15 @@ h2.section {
 .sample .q { font-weight: 500; }
 .sample .note { font-size: 1.15rem; max-width: 15em; text-align: right; }
 
+/* sample link */
+.try {
+  margin-top: 28px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center;
+  padding: 24px 0 0; border-top: 1px dashed var(--rule);
+}
+.try h3 { margin: 0 0 4px; font-size: 1.2rem; }
+.try p { margin: 0; color: var(--graphite); }
+@media (max-width: 860px) { .try { grid-template-columns: 1fr; gap: 14px; } }
+
 /* background */
 .about { display: grid; grid-template-columns: 1fr 1.3fr; gap: 56px; }
 .about p { margin: 0 0 16px; max-width: 34em; }
@@ -156,6 +165,32 @@ h2.section {
 .crosslink h2 { margin-bottom: 8px; }
 
 .contact .button { margin-top: 8px; }
+
+/* home page: two paths */
+.home-hero { padding: 64px 0 48px; max-width: 46em; }
+.paths { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding-bottom: 72px; }
+.path {
+  display: flex; flex-direction: column; text-decoration: none; color: var(--ink);
+  background: #fff; border: 1px solid var(--rule); border-radius: 3px;
+  padding: 32px; box-shadow: 6px 6px 0 var(--grid);
+}
+.path h2 { font-size: clamp(1.6rem, 3vw, 2rem); letter-spacing: -0.02em; font-weight: 800; margin: 0 0 6px; }
+.path .sub { font-weight: 600; margin: 0 0 14px; }
+.path p { margin: 0 0 22px; color: var(--graphite); }
+.path .links { margin-top: auto; display: flex; flex-wrap: wrap; gap: 12px; }
+.path .button { padding: 12px 20px; }
+.button.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
+.button.ghost:hover { background: #eef2f8; }
+.path .tests { margin: 0 0 18px; }
+.home-contact { border-top: 1px solid var(--rule); padding: 40px 0; }
+.home-contact p { margin: 0; color: var(--graphite); }
+.home-contact a { font-weight: 700; color: var(--ink); }
+@media (max-width: 860px) {
+  .paths { grid-template-columns: 1fr; }
+  .home-hero { padding-top: 32px; }
+  .path { padding: 24px; }
+  .path .button { padding: 12px 14px; font-size: .95rem; }
+}
 
 footer {
   padding: 28px 0 40px; border-top: 1px solid var(--rule); color: var(--graphite); font-size: 0.95rem;
