@@ -21,14 +21,9 @@
   <h1>ACT English Practice: Agreement, Pronouns &amp; Verb Choice</h1>
   <p class="sub">Sample: 16 questions</p>
 
-  <div id="start" class="card">
-    <p><b>Directions:</b> Choose the best answer. For questions with an <u>underlined</u> portion, choose NO CHANGE if the original is best.</p>
-    <label class="opt"><input type="checkbox" id="shuffle"> Shuffle question order</label>
-    <div class="row"><button class="btn" id="startBtn">Start</button></div>
-    <p class="hint">Keyboard shortcuts: press A–D (or 1–4) to answer, Enter for the next question.</p>
-  </div>
+  <p class="directions"><b>Directions:</b> Choose the best answer. For questions with an <u>underlined</u> portion, choose NO CHANGE if the original is best. <span class="keys">Shortcuts: A–D to answer, Enter for the next question.</span></p>
 
-  <div id="quiz" class="card hidden">
+  <div id="quiz" class="card">
     <div class="topbar"><span id="counter"></span><span id="sectionLabel"></span></div>
     <div class="progress"><div id="bar"></div></div>
     <div class="question"><span class="qnum" id="qnum"></span><span id="qtext"></span></div>
@@ -49,7 +44,7 @@
     <table id="breakdown"></table>
     <div class="row">
       <button class="btn" id="retryBtn">Retry missed questions</button>
-      <button class="btn secondary" id="restartBtn">Back to start</button>
+      <button class="btn secondary" id="restartBtn">Start over</button>
     </div>
     <h3>Review missed questions</h3>
     <div id="review"></div>
@@ -111,12 +106,12 @@ function shuffle(arr) {
 }
 
 function show(screen) {
-  ["start", "quiz", "results"].forEach(s => $(s).classList.toggle("hidden", s !== screen));
+  ["quiz", "results"].forEach(s => $(s).classList.toggle("hidden", s !== screen));
   window.scrollTo(0, 0);
 }
 
 function startQuiz(questions) {
-  pool = $("shuffle").checked ? shuffle(questions) : questions.slice();
+  pool = questions.slice();
   idx = 0; results = [];
   show("quiz");
   renderQuestion();
@@ -220,11 +215,11 @@ function escapeHtml(s) {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
-$("startBtn").onclick = () => startQuiz(QUESTIONS);
 $("nextBtn").onclick = next;
-$("quitBtn").onclick = () => { if (results.length) showResults(); else show("start"); };
+$("quitBtn").onclick = () => { if (results.length) showResults(); };
 $("retryBtn").onclick = () => startQuiz(results.filter(r => !r.correct).map(r => r.q));
-$("restartBtn").onclick = () => show("start");
+$("restartBtn").onclick = () => startQuiz(QUESTIONS);
+startQuiz(QUESTIONS);
 
 document.addEventListener("keydown", e => {
   if ($("quiz").classList.contains("hidden")) return;
