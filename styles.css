@@ -168,6 +168,17 @@ h2.section {
 
 /* home page: two paths */
 .home-hero { padding: 64px 0 48px; max-width: 46em; }
+.facts { list-style: none; margin: 4px 0 0; padding: 0; max-width: 36em; }
+.facts li {
+  position: relative; padding: 10px 0 10px 40px;
+  font-size: 1.2rem; line-height: 1.45; color: var(--ink);
+  border-bottom: 1px dashed var(--rule);
+}
+.facts li:last-child { border-bottom: 0; }
+.facts li::before {
+  content: "✓"; position: absolute; left: 4px; top: 4px;
+  font-family: var(--hand); font-weight: 700; font-size: 1.6rem; color: var(--redpen);
+}
 .paths { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding-bottom: 72px; }
 .path {
   display: flex; flex-direction: column; text-decoration: none; color: var(--ink);
@@ -177,7 +188,7 @@ h2.section {
 .path h2 { font-size: clamp(1.6rem, 3vw, 2rem); letter-spacing: -0.02em; font-weight: 800; margin: 0 0 6px; }
 .path .sub { font-weight: 600; margin: 0 0 14px; }
 .path p { margin: 0 0 22px; color: var(--graphite); }
-.path .links { margin-top: auto; display: flex; flex-wrap: wrap; gap: 12px; }
+.path .links { margin-top: auto; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
 .path .button {
   background: #e8eef7;      /* pale blue-gray */
   color: var(--ink);
