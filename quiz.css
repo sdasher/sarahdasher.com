@@ -106,23 +106,37 @@ h1 { font-size: clamp(1.5rem, 3.4vw, 1.9rem); letter-spacing: -0.02em; font-weig
 .cap { font-size: .86rem; color: var(--muted); margin: 6px 0 0; }
 .q { font-size: 1.12rem; font-weight: 700; margin: 8px 0 14px; letter-spacing: -0.005em; }
 
-/* answer choices */
-.opts { display: grid; gap: 8px; }
-.opt {
-  display: flex; gap: 12px; align-items: flex-start; text-align: left; width: 100%;
-  padding: 11px 14px; border: 1px solid var(--rule); border-radius: 3px;
-  background: #fff; color: var(--ink); font: inherit; cursor: pointer;
+/* answer choices: one stacked list, styled like a bubble answer sheet.
+   .opts/.opt = geometry sets, .choices/.choice = ACT sets */
+.opts, .choices {
+  display: flex; flex-direction: column; margin: 0;
+  border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; background: #fff;
 }
-.opt:hover:not([disabled]) { border-color: var(--ink); }
-.opt .k {
-  flex: none; width: 26px; height: 26px; border-radius: 3px; border: 2px solid var(--ink);
-  display: grid; place-items: center; font-size: .8rem; font-weight: 800;
+.opt, .choice {
+  display: flex; align-items: center; gap: 14px; width: 100%; margin: 0;
+  padding: 12px 16px; text-align: left;
+  background: #fff; color: var(--ink); font: inherit; font-size: 1.02rem;
+  border: 0; border-bottom: 1px solid var(--rule); border-radius: 0; cursor: pointer;
+  transition: background .12s;
 }
-.opt.right { border-color: var(--ok); background: var(--ok-bg); }
-.opt.right .k { border-color: var(--ok); color: var(--ok); }
-.opt.wrong { border-color: var(--redpen); background: var(--bad-bg); }
-.opt.wrong .k { border-color: var(--redpen); color: var(--redpen); }
-.opt[disabled] { cursor: default; }
+.opt:last-child, .choice:last-child { border-bottom: 0; }
+.opt:hover:not([disabled]), .choice:hover:not(:disabled) { background: #f3f6fa; }
+.opt[disabled], .choice:disabled { cursor: default; }
+
+/* the letter bubble */
+.opt .k, .choice .letter {
+  flex: none; width: 28px; height: 28px; border-radius: 50%;
+  border: 1.5px solid var(--axis); color: var(--graphite);
+  display: grid; place-items: center; font-size: .8rem; font-weight: 700;
+  transition: border-color .12s, background .12s, color .12s;
+}
+.opt:hover:not([disabled]) .k, .choice:hover:not(:disabled) .letter { border-color: var(--ink); color: var(--ink); }
+
+/* after answering: the bubble fills in */
+.opt.right, .choice.correct { background: var(--ok-bg); }
+.opt.right .k, .choice.correct .letter { background: var(--ok); border-color: var(--ok); color: #fff; }
+.opt.wrong, .choice.wrong { background: var(--bad-bg); }
+.opt.wrong .k, .choice.wrong .letter { background: var(--redpen); border-color: var(--redpen); color: #fff; }
 
 /* feedback */
 .fb { margin-top: 14px; padding: 12px 14px; border-radius: 3px; font-size: .96rem; }
@@ -191,16 +205,6 @@ body.act .progress > div { height: 100%; background: var(--ink); transition: wid
 body.act .question { font-size: 1.15rem; margin-bottom: 18px; }
 body.act .question u { text-decoration-thickness: 2px; text-underline-offset: 3px; text-decoration-color: var(--redpen); }
 body.act .qnum { font-weight: 800; margin-right: 6px; }
-body.act .choice {
-  display: flex; align-items: flex-start; gap: 12px; width: 100%; text-align: left;
-  background: #fff; border: 1px solid var(--rule); border-radius: 3px;
-  padding: 11px 14px; margin-bottom: 8px; cursor: pointer; font: inherit; font-size: 1.02rem; color: var(--ink);
-}
-body.act .choice:hover:not(:disabled) { border-color: var(--ink); }
-body.act .choice:disabled { cursor: default; }
-body.act .choice .letter { font-weight: 800; min-width: 22px; }
-body.act .choice.correct { background: var(--ok-bg); border-color: var(--ok); }
-body.act .choice.wrong { background: var(--bad-bg); border-color: var(--redpen); }
 body.act .feedback { margin-top: 14px; padding: 12px 14px; border-radius: 3px; font-size: .96rem; }
 body.act .feedback.good { background: var(--ok-bg); border-left: 3px solid var(--ok); }
 body.act .feedback.good b { color: var(--ok); }
