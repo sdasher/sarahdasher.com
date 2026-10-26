@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sample ACT English Problem Set | Sarah Dasher</title>
+<meta name="description" content="Try a sample of a custom ACT English problem set: agreement, pronouns and verb choice.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../quiz.css">
+</head>
+<body class="act">
+<header class="site-head"><a href="../">Sarah Dasher</a></header>
+<div class="letter"><div class="letter-inner">
+  <p class="kicker">Sample problem set</p>
+  <p>16 questions from a 245-question ACT English set built around one student's errors in agreement, pronouns and verb choice. Each answer comes with an explanation.</p>
+  <p><a href="../testprep/">Back to test prep</a></p>
+</div></div>
+<div class="wrap">
+  <h1>ACT English Practice: Agreement, Pronouns &amp; Verb Choice</h1>
+  <p class="sub">Sample: 16 questions</p>
+
+  <p class="directions"><b>Directions:</b> Choose the best answer. For questions with an <u>underlined</u> portion, choose NO CHANGE if the original is best. <span class="keys">Shortcuts: A–D to answer, Enter for the next question.</span></p>
+
+  <div id="quiz" class="card">
+    <div class="topbar"><span id="counter"></span><span id="sectionLabel"></span></div>
+    <div class="progress"><div id="bar"></div></div>
+    <div class="question"><span class="qnum" id="qnum"></span><span id="qtext"></span></div>
+    <div class="choices" id="choices"></div>
+    <div id="feedback" class="feedback hidden"></div>
+    <div class="row">
+      <button class="btn hidden" id="nextBtn">Next</button>
+      <button class="btn secondary" id="quitBtn">End quiz</button>
+    </div>
+    <p class="running">Score so far: <span id="running">0 / 0</span></p>
+  </div>
+
+  <div id="results" class="card hidden">
+    <p class="muted">Your score</p>
+    <p class="score" id="finalScore"></p>
+    <p id="finalPct"></p>
+    <h3>By section</h3>
+    <table id="breakdown"></table>
+    <div class="row">
+      <button class="btn" id="retryBtn">Retry missed questions</button>
+      <button class="btn secondary" id="restartBtn">Start over</button>
+    </div>
+    <h3>Review missed questions</h3>
+    <div id="review"></div>
+    <div class="cta">
+      <p>Want a set built around your own errors?</p>
+      <a class="btn" href="../testprep/#contact">Book a diagnostic session</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const SECTIONS = [
+  "Subject-Verb Agreement",
+  "Tense and Timeline",
+  "Verb Forms",
+  "Simple vs. “-ing” Verbs and Sentence Structure",
+  "Concision and Style",
+  "Subject-Verb Agreement (Advanced Drill)",
+  "Pronoun Agreement, Case, and Reference",
+  "Awkward Verb Constructions (Advanced Drill)"
+];
+
+const DATA = [
+[1, "The stack of overdue library books on my brother's desk ___ been there since June.", ["have", "has", "were", "are"], "B", "Subject “stack” is singular."],
+[1, "Beneath the floorboards of the old farmhouse ___ a box of letters and a faded photograph.", ["was", "has been", "were", "is"], "C", "Inverted sentence; the compound subject (box and photograph) is plural."],
+[2, "Since she moved to Tucson in 2019, Dana ___ three different jobs.", ["held", "has held", "had held", "holds"], "B", "“Since” + a past time calls for present perfect."],
+[2, "The museum ___ the exhibit in 2021, shortly after the renovation was completed.", ["opened", "has opened", "had opened", "has been opening"], "A", "A specific past date calls for simple past."],
+[3, "The dog has ___ on the couch all morning.", ["laid", "lain", "lay", "lied"], "B", "Lie (to rest): lie, lay, lain. After “has,” use “lain.”"],
+[3, "Please ___ the folders on my desk before you leave.", ["lie", "laying", "lain", "lay"], "D", "Lay (to place) takes an object: lay the folders."],
+[4, "The receipt <u>is showing</u> that the purchase was made on March 3.", ["NO CHANGE", "showing", "shows", "it shows"], "C", "A fact stated by a document takes simple present."],
+[4, "The jar on the top shelf <u>is containing</u> buttons from my grandmother's sewing kit.", ["NO CHANGE", "containing", "it contains", "contains"], "D", "“Contain” is a state verb; it doesn't take the progressive."],
+[5, "Which choice is clearest and most concise?", ["A decision to cancel the trip was made by the principal.", "The principal decided to cancel the trip.", "It was the principal who made the decision of canceling the trip.", "The trip's cancellation was decided upon by the principal."], "B", "Active voice with the fewest words."],
+[5, "___ the oldest of five children, Marcus often cooked dinner for his siblings.", ["Being that he was", "Being as he was", "As", "His being"], "C", "Avoid “being that” and “being as.”"],
+[6, "One of the researchers who <u>has</u> studied the paintings believes that the artist used an unusual pigment.", ["NO CHANGE", "have", "having", "was"], "B", "The relative clause modifies the plural noun “researchers,” so its verb is “have.” The main subject “One” takes “believes.”"],
+[6, "The number of artifacts recovered from the shipwreck <u>have</u> doubled since the excavation began.", ["NO CHANGE", "has", "are", "were"], "B", "The subject is the singular noun “number.” “Artifacts” is inside a modifying phrase."],
+[7, "The curator gave the interns and <u>I</u> access to the restricted archive.", ["NO CHANGE", "myself", "me", "mine"], "C", "The pronoun is an object of “gave”: the curator gave me access. Adding “the interns” does not change its case."],
+[7, "<u>Me and Luis</u> reviewed the original survey records.", ["NO CHANGE", "Luis and me", "Luis and I", "Myself and Luis"], "C", "The compound phrase is the subject of “reviewed”; “I” is the subject form."],
+[8, "By the time the museum opened in 2003, its staff <u>have restored</u> nearly all of the murals.", ["NO CHANGE", "restore", "had restored", "were restoring"], "C", "“Had restored” places the completed restoration before the museum opened in 2003."],
+[8, "Since 2018, the team <u>has monitored</u> temperatures at the same five sites, and it continues to do so.", ["NO CHANGE", "monitored", "had monitored", "was monitoring"], "A", "“Has monitored” links an activity that began in 2018 to the present, reinforced by “continues to do so.”"]
+];
+
+const LETTERS = "ABCD";
+const QUESTIONS = DATA.map((d, i) => ({
+  num: i + 1, section: d[0], text: d[1], choices: d[2],
+  answer: LETTERS.indexOf(d[3]), why: d[4],
+  alt: d[5] ? LETTERS.indexOf(d[5]) : -1, altNote: d[6] || ""
+}));
+
+const $ = id => document.getElementById(id);
+let pool = [], idx = 0, results = [], answered = false;
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function show(screen) {
+  ["quiz", "results"].forEach(s => $(s).classList.toggle("hidden", s !== screen));
+  window.scrollTo(0, 0);
+}
+
+function startQuiz(questions) {
+  pool = questions.slice();
+  idx = 0; results = [];
+  show("quiz");
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = pool[idx];
+  answered = false;
+  $("counter").textContent = `Question ${idx + 1} of ${pool.length}`;
+  $("sectionLabel").textContent = SECTIONS[q.section - 1];
+  $("bar").style.width = `${(idx / pool.length) * 100}%`;
+  $("qnum").textContent = q.num + ".";
+  $("qtext").innerHTML = q.text;
+  const box = $("choices");
+  box.innerHTML = "";
+  q.choices.forEach((c, i) => {
+    const b = document.createElement("button");
+    b.className = "choice";
+    b.innerHTML = `<span class="letter">${LETTERS[i]}</span><span></span>`;
+    b.lastChild.textContent = c;
+    b.onclick = () => choose(i);
+    box.appendChild(b);
+  });
+  $("feedback").className = "feedback hidden";
+  $("nextBtn").classList.add("hidden");
+  updateRunning();
+}
+
+function choose(i) {
+  if (answered) return;
+  answered = true;
+  const q = pool[idx];
+  const isAlt = i === q.alt;
+  const correct = i === q.answer || isAlt;
+  results.push({ q, chosen: i, correct });
+  const buttons = $("choices").children;
+  for (let k = 0; k < buttons.length; k++) {
+    buttons[k].disabled = true;
+    if (k === q.answer || (isAlt && k === i)) buttons[k].classList.add("correct");
+    else if (k === i) buttons[k].classList.add("wrong");
+  }
+  const fb = $("feedback");
+  fb.className = "feedback " + (correct ? "good" : "bad");
+  if (isAlt) {
+    fb.innerHTML = `<b>Accepted.</b> The intended answer is ${LETTERS[q.answer]}. ${q.why} ${q.altNote}`;
+  } else if (correct) {
+    fb.innerHTML = `<b>Correct.</b> ${q.why}`;
+  } else {
+    fb.innerHTML = `<b>Not quite. The answer is ${LETTERS[q.answer]}.</b> ${q.why}`;
+  }
+  $("nextBtn").textContent = idx === pool.length - 1 ? "See results" : "Next";
+  $("nextBtn").classList.remove("hidden");
+  $("nextBtn").focus();
+  updateRunning();
+}
+
+function updateRunning() {
+  const right = results.filter(r => r.correct).length;
+  $("running").textContent = `${right} / ${results.length}`;
+}
+
+function next() {
+  if (!answered) return;
+  if (idx < pool.length - 1) { idx++; renderQuestion(); }
+  else showResults();
+}
+
+function showResults() {
+  $("bar").style.width = "100%";
+  const right = results.filter(r => r.correct).length;
+  const total = results.length;
+  $("finalScore").textContent = `${right} / ${total}`;
+  $("finalPct").textContent = total ? `${Math.round((right / total) * 100)}% correct` : "No questions answered.";
+
+  let rows = "<tr><th>Section</th><th>Correct</th><th>%</th></tr>";
+  SECTIONS.forEach((name, i) => {
+    const rs = results.filter(r => r.q.section === i + 1);
+    if (!rs.length) return;
+    const c = rs.filter(r => r.correct).length;
+    rows += `<tr><td>${name}</td><td>${c} / ${rs.length}</td><td>${Math.round((c / rs.length) * 100)}%</td></tr>`;
+  });
+  $("breakdown").innerHTML = rows;
+
+  const missed = results.filter(r => !r.correct);
+  const review = $("review");
+  review.innerHTML = missed.length ? "" : "<p>No missed questions. Nice work!</p>";
+  missed.forEach(r => {
+    const div = document.createElement("div");
+    div.className = "review-item";
+    div.innerHTML =
+      `<div><b>${r.q.num}.</b> ${r.q.text}</div>` +
+      `<div class="ui">Your answer: ${LETTERS[r.chosen]}. ${escapeHtml(r.q.choices[r.chosen])}<br>` +
+      `Correct answer: ${LETTERS[r.q.answer]}. ${escapeHtml(r.q.choices[r.q.answer])}<br>${r.q.why}</div>`;
+    review.appendChild(div);
+  });
+  $("retryBtn").disabled = missed.length === 0;
+  show("results");
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+$("nextBtn").onclick = next;
+$("quitBtn").onclick = () => { if (results.length) showResults(); };
+$("retryBtn").onclick = () => startQuiz(results.filter(r => !r.correct).map(r => r.q));
+$("restartBtn").onclick = () => startQuiz(QUESTIONS);
+startQuiz(QUESTIONS);
+
+document.addEventListener("keydown", e => {
+  if ($("quiz").classList.contains("hidden")) return;
+  const key = e.key.toUpperCase();
+  const map = { A: 0, B: 1, C: 2, D: 3, "1": 0, "2": 1, "3": 2, "4": 3 };
+  if (!answered && key in map) { choose(map[key]); }
+  else if (answered && e.key === "Enter") { e.preventDefault(); next(); }
+});
+</script>
+</body>
+</html>
