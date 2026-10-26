@@ -3,47 +3,124 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sarah Dasher Tutoring</title>
-<meta name="description" content="One-on-one ACT, SAT and GRE prep and middle and high school math tutoring. One diagnostic session, then custom interactive problem sets aimed at each student's exact errors.">
+<title>Sarah Dasher Test Prep</title>
+<meta name="description" content="One-on-one ACT, SAT and GRE prep for high-scoring students. One diagnostic session, then custom interactive problem sets aimed at the exact errors costing points.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 <body>
 <div class="wrap">
   <header class="site">
-    <a class="name" href="./" aria-current="page">Sarah Dasher</a>
+    <a class="name" href="../">Sarah Dasher</a>
     <nav aria-label="Main">
-      <a href="testprep/">Test prep</a>
-      <a href="tutoring/">School tutoring</a>
+      <a href="./" aria-current="page">Test prep</a>
+      <a href="../tutoring/">School tutoring</a>
+      <a class="hide-sm" href="#contact">Contact</a>
     </nav>
   </header>
 
   <main>
-    <div class="home-hero">
-      <h1>One-on-one tutoring aimed at the exact errors that cost points.</h1>
-      <p class="lede">20 years of tutoring. One diagnostic session, then custom interactive problem sets built for each student. No repeating what they already know.</p>
+    <div class="hero">
+      <div>
+        <h1>Get the last few points out of your college entrance exams.</h1>
+        <p class="lede">One-on-one ACT, SAT and GRE prep for high-scoring students. One diagnostic session, then custom interactive problem sets aimed at the exact errors costing you points.</p>
+        <a class="button" href="#contact">Book a diagnostic session</a>
+        <a class="aside-link" href="#method">How it works</a>
+      </div>
+
+      <div class="sheet" aria-label="Illustration: the last few points at the top of each test's scale">
+        <h2>Where the last points are</h2>
+        <div class="test">
+          <div class="test-row"><span>SAT</span><span>out of 1600</span></div>
+          <div class="bar" style="--w: 91%"><div class="fill"></div><div class="gap"></div></div>
+        </div>
+        <div class="test">
+          <div class="test-row"><span>ACT</span><span>out of 36</span></div>
+          <div class="bar" style="--w: 89%"><div class="fill"></div><div class="gap"></div></div>
+        </div>
+        <div class="test">
+          <div class="test-row"><span>GRE</span><span>out of 340</span></div>
+          <div class="bar" style="--w: 92%"><div class="fill"></div><div class="gap"></div></div>
+        </div>
+        <p class="note end">this is the part we work on</p>
+      </div>
     </div>
 
-    <div class="paths">
-      <a class="path" href="testprep/">
-        <h2>Test prep</h2>
-        <div class="tests"><span>ACT</span><span>SAT</span><span>GRE</span></div>
-        <p>For high-scoring students after the last few points.</p>
-        <span class="go">View test prep</span>
-      </a>
-      <a class="path" href="tutoring/">
-        <h2>School tutoring</h2>
-        <p class="sub">Middle and high school math</p>
-        <p>Coursework, homework and exams, aimed at the specific skills holding a student back.</p>
-        <span class="go">View school tutoring</span>
-      </a>
-    </div>
+    <section id="method">
+      <h2 class="section">Customized interactive problem sets</h2>
+      <p class="intro">Flashcards, apps and prep books repeat questions you already know, sorted by broad subject. Real errors are narrower than that. Every set I write targets yours.</p>
+      <ol class="steps">
+        <li>
+          <h3>One diagnostic session</h3>
+          <p>We work problems together, and I pinpoint where your reasoning breaks down. Score reports can't do this. Their categories are too broad.</p>
+        </li>
+        <li>
+          <h3>Custom problem sets</h3>
+          <p>Interactive sets aimed at those exact errors, at the difficulty you need.</p>
+        </li>
+        <li>
+          <h3>New sets as you improve</h3>
+          <p>Work on your own schedule. Each new set targets what still needs work.</p>
+        </li>
+      </ol>
 
-    <div class="home-contact">
-      <p>Questions? Email <a href="mailto:dashertutor@gmail.com">dashertutor@gmail.com</a></p>
-    </div>
+      <div class="sample">
+        <p class="q">A score report says "algebra." The real error is a dropped negative sign when distributing. The set targets that step, in rising difficulty, until it's gone.</p>
+        <p class="note">nothing you already know</p>
+      </div>
+
+      <div class="try">
+        <div>
+          <h3>Try a sample set</h3>
+          <p>16 questions from a custom ACT English set on agreement, pronouns and verb choice.</p>
+        </div>
+        <a class="button" href="../samples/act-english.html">Try the sample</a>
+      </div>
+    </section>
+
+    <section id="services">
+      <h2 class="section">Services</h2>
+      <p class="intro">All sessions are one-on-one. Ongoing sessions are available alongside problem sets.</p>
+      <div class="services">
+        <div class="service lead">
+          <div>
+            <h3>Test prep</h3>
+            <div class="tests"><span>ACT</span><span>SAT</span><span>GRE</span></div>
+          </div>
+          <p>A track record of moving high scorers higher. At that level, more practice tests don't help. Finding and fixing the specific errors does.</p>
+        </div>
+        <div class="service">
+          <h3>Middle and high school math</h3>
+          <p>Coursework, homework and exam prep, using the same custom problem sets.</p>
+          <a class="more" href="../tutoring/">School tutoring</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="about">
+        <div>
+          <h2 class="section">Background</h2>
+          <p>20 years of tutoring in classrooms, in webinars of up to 50 students, and one-on-one. Author of test prep materials used by students worldwide.</p>
+          <p>Also a professional data analyst. I read student work like any dataset: find the pattern, fix what matters.</p>
+        </div>
+        <ul class="creds">
+          <li><strong>20 years of tutoring</strong><span>1,000+ hours of one-on-one instruction in math, SAT, ACT and GRE</span></li>
+          <li><strong>Test prep instructor and materials developer</strong><span>For national companies including Kaplan, Varsity, Revolution Prep, Next Step and Ready4</span></li>
+          <li><strong>Former editor at a science magazine</strong><span>Also a technical and marketing writer for corporate clients</span></li>
+          <li><strong>Former middle school science teacher</strong></li>
+          <li><strong>B.A., Amherst College</strong><span>M.S., University of Arizona; M.S., University of Wisconsin–Madison</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2 class="section">Book a diagnostic session</h2>
+      <p class="intro">Email your test, current score and target.</p>
+      <a class="button" href="mailto:dashertutor@gmail.com?subject=Test%20prep%20inquiry">Email Sarah</a>
+    </section>
   </main>
 
   <footer>
