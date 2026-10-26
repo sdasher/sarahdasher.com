@@ -50,16 +50,16 @@ button { font-family: var(--sans); }
 .site-head a { font-weight: 800; font-size: 1.05rem; text-decoration: none; letter-spacing: -0.01em; }
 
 /* note from Sarah */
-.letter {
+div.letter {
   max-width: 760px; margin: 12px auto 4px; padding: 0 16px;
 }
 .letter-inner {
   background: #fff; border: 1px solid var(--rule); border-radius: 3px;
   padding: 22px 26px; box-shadow: 6px 6px 0 var(--gridline);
 }
-.letter p { margin: 0 0 10px; max-width: 62ch; }
-.letter p:last-child { margin-bottom: 0; }
-.letter .sign { font-family: var(--hand); color: var(--redpen); font-size: 1.35rem; line-height: 1.2; }
+div.letter p { margin: 0 0 10px; max-width: 62ch; }
+div.letter p:last-child { margin-bottom: 0; }
+div.letter .sign { font-family: var(--hand); color: var(--redpen); font-size: 1.35rem; line-height: 1.2; }
 
 /* quiz layout */
 .wrap { max-width: 760px; margin: 0 auto; padding: 24px 16px 48px; }
@@ -166,3 +166,53 @@ h1 { font-size: clamp(1.5rem, 3.4vw, 1.9rem); letter-spacing: -0.02em; font-weig
   .card { padding: 14px; }
   .letter-inner { padding: 18px; }
 }
+
+/* sample pages */
+.kicker { font-weight: 800; font-size: 1.05rem; letter-spacing: -0.01em; margin-bottom: 6px !important; }
+div.letter a { font-weight: 600; }
+.cta {
+  margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--rule);
+  display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+}
+.cta p { margin: 0; font-weight: 700; }
+.cta .btn { text-decoration: none; display: inline-block; }
+.hidden { display: none !important; }
+
+/* ACT English quiz layout (scoped so it doesn't affect other sets) */
+body.act .card > p { margin: 0 0 12px; }
+body.act label.opt { display: flex; gap: 8px; align-items: center; margin: 10px 0; cursor: pointer; }
+body.act .row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; justify-content: flex-start; font-size: 1rem; }
+body.act .btn.secondary { background: transparent; color: var(--ink); }
+body.act .btn.secondary:hover { background: #eef2f8; }
+body.act .hint, body.act .running, body.act .muted { color: var(--muted); font-size: .88rem; margin: 14px 0 0; }
+body.act .topbar { color: var(--muted); font-size: .88rem; margin-bottom: 8px; }
+body.act .progress { height: 8px; background: #eef2f8; border-radius: 2px; overflow: hidden; margin-bottom: 20px; }
+body.act .progress > div { height: 100%; background: var(--ink); transition: width .2s; }
+body.act .question { font-size: 1.15rem; margin-bottom: 18px; }
+body.act .question u { text-decoration-thickness: 2px; text-underline-offset: 3px; text-decoration-color: var(--redpen); }
+body.act .qnum { font-weight: 800; margin-right: 6px; }
+body.act .choice {
+  display: flex; align-items: flex-start; gap: 12px; width: 100%; text-align: left;
+  background: #fff; border: 1px solid var(--rule); border-radius: 3px;
+  padding: 11px 14px; margin-bottom: 8px; cursor: pointer; font: inherit; font-size: 1.02rem; color: var(--ink);
+}
+body.act .choice:hover:not(:disabled) { border-color: var(--ink); }
+body.act .choice:disabled { cursor: default; }
+body.act .choice .letter { font-weight: 800; min-width: 22px; }
+body.act .choice.correct { background: var(--ok-bg); border-color: var(--ok); }
+body.act .choice.wrong { background: var(--bad-bg); border-color: var(--redpen); }
+body.act .feedback { margin-top: 14px; padding: 12px 14px; border-radius: 3px; font-size: .96rem; }
+body.act .feedback.good { background: var(--ok-bg); border-left: 3px solid var(--ok); }
+body.act .feedback.good b { color: var(--ok); }
+body.act .feedback.bad { background: var(--bad-bg); border-left: 3px solid var(--redpen); }
+body.act .feedback.bad b { color: var(--redpen); }
+body.act .score { font-size: 2.6rem; font-weight: 800; letter-spacing: -0.03em; margin: 0; }
+body.act h3 { font-size: 1.1rem; margin: 24px 0 8px; }
+body.act table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+body.act th, body.act td { border-bottom: 1px solid var(--rule); padding: 8px; text-align: left; }
+body.act .review-item { border-top: 1px solid var(--rule); padding: 14px 0; }
+body.act .review-item .ui { font-size: .92rem; color: var(--muted); margin-top: 6px; }
+
+/* ACT sample: directions above the first question */
+body.act .directions { font-size: .95rem; color: var(--ink); margin: 0 0 14px; max-width: 62ch; }
+body.act .directions .keys { display: block; color: var(--muted); font-size: .85rem; margin-top: 4px; }
