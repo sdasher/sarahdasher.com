@@ -130,7 +130,7 @@ function renderQuestion() {
   q.choices.forEach((c, i) => {
     const b = document.createElement("button");
     b.className = "choice";
-    b.innerHTML = `<span class="letter">${LETTERS[i]}.</span><span></span>`;
+    b.innerHTML = `<span class="letter">${LETTERS[i]}</span><span></span>`;
     b.lastChild.textContent = c;
     b.onclick = () => choose(i);
     box.appendChild(b);
