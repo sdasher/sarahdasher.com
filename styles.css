@@ -201,6 +201,30 @@ h2.section {
   .tcard { padding: 22px; }
 }
 
+/* "how narrow it gets" ladder */
+.zoom {
+  margin-top: 44px; background: #fff; border: 1px solid var(--rule); border-radius: 3px;
+  padding: 26px 30px 22px; box-shadow: 6px 6px 0 var(--grid); max-width: 46em;
+}
+.zoom h3 { margin: 0 0 14px; font-size: 1.2rem; }
+.zoom dl { margin: 0; }
+.zoom dl > div {
+  display: grid; grid-template-columns: 11em 1fr; gap: 16px; align-items: baseline;
+  padding: 12px 0; border-bottom: 1px dashed var(--rule);
+}
+.zoom dt { color: var(--graphite); font-size: .95rem; }
+.zoom dd { margin: 0; font-weight: 600; color: var(--graphite); }
+.zoom dl > div:nth-child(2) dd { color: var(--ink); }
+.zoom .mine { border-bottom: 0; }
+.zoom .mine dt { color: var(--ink); font-weight: 700; }
+.zoom .mine dd { color: var(--ink); font-weight: 800; font-size: 1.15rem; }
+.zoom .eg { display: block; margin-top: 4px; font-weight: 400; font-size: .95rem; color: var(--graphite); }
+.zoom .note { margin: 6px 0 0; text-align: right; }
+@media (max-width: 860px) {
+  .zoom { padding: 22px; }
+  .zoom dl > div { grid-template-columns: 1fr; gap: 2px; }
+}
+
 /* sample link */
 .try {
   margin-top: 28px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center;
